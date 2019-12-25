@@ -1,10 +1,11 @@
 package com.book.bookbackend.repo;
 
 import com.book.bookbackend.model.Book;
-import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.stereotype.Repository;
 
-@Repository
-public interface BookRepo extends JpaRepository<Book, Long>,BookRepoCustom {
+import java.util.List;
 
+public interface BookRepo {
+    List<Object[]> getAllBooks() throws Exception;
+
+    Object[] getBookById(Integer id) throws Exception;
 }

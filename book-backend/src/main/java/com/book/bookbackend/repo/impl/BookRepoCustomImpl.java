@@ -27,4 +27,20 @@ public class BookRepoCustomImpl implements BookRepoCustom {
             return null;
         }
     }
+
+    @Override
+    public Object[] getBookById(Integer id) throws Exception {
+        StringBuilder stringBuilder = new StringBuilder();
+        stringBuilder.append("select b.id as id, b.name as name, aut.name as author, btype.name as type ");
+         stringBuilder.append("from books b, author aut, book_type btype ");
+         stringBuilder.append("where b.author_id=aut.id and b.type_id=btype.id and b.id=:id");
+         Query query = entityManager.createNativeQuery(stringBuilder.toString());
+         query.setParameter("id", id);
+         Object[] book = (Object[]) query.getSingleResult();
+         if (book!=null){
+             return book;
+         } else{
+             return null;
+         }
+    }
 }

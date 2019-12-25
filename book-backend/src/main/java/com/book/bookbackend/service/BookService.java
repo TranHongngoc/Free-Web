@@ -6,5 +6,5 @@ import java.util.List;
 
 public interface BookService {
     List<Book> getAllBooks () throws Exception;
-    Book createBook(Book book) throws Exception;
+    Book getBookById(Integer id) throws Exception;
 }
