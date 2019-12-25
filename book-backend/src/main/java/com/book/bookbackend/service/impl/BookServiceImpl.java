@@ -28,4 +28,16 @@ public class BookServiceImpl implements BookService {
         }
         return books;
     }
+
+    @Override
+    public Book getBookById(Integer id) throws Exception {
+        Object[] object = bookRepo.getBookById(id);
+        Book book = new Book();
+        book.setId((Integer) object[0]);
+        book.setName((String) object[1]);
+        book.setAuthor((String) object[2]);
+        book.setType((String) object[3]);
+//        book.setId((Integer) object[0]);
+        return book;
+    }
 }
