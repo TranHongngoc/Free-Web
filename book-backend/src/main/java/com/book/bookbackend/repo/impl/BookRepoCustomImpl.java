@@ -1,8 +1,6 @@
 package com.book.bookbackend.repo.impl;
 
-import com.book.bookbackend.model.Book;
-import com.book.bookbackend.repo.BookRepo;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.book.bookbackend.repo.BookRepoCustom;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
@@ -10,8 +8,7 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 import java.util.List;
 
-@Repository
-public class BookRepoImpl implements BookRepo {
+public class BookRepoCustomImpl implements BookRepoCustom {
 
     @PersistenceContext
     EntityManager entityManager;

@@ -2,6 +2,7 @@ package com.book.bookbackend.service.impl;
 
 import com.book.bookbackend.model.Book;
 import com.book.bookbackend.repo.BookRepo;
+import com.book.bookbackend.repo.BookRepoCustom;
 import com.book.bookbackend.service.BookService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -27,5 +28,10 @@ public class BookServiceImpl implements BookService {
             books.add(book1);
         }
         return books;
+    }
+
+    @Override
+    public Book createBook(Book book) throws Exception {
+        return bookRepo.save(book);
     }
 }

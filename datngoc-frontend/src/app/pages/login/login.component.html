@@ -1,0 +1,16 @@
+<div class="container d-flex justify-content-center align-items-center">
+    <div class="form-wrapper text-center">
+        <h2 class="text-center">
+            Login
+        </h2>
+        <form action="#" [formGroup]="loginForm"(submit)="submit()" novalidate>
+            <div class="form-group">
+                <input type="email" name="email" id="email" placeholder="Email" formControlName="email"  class="form-control">
+            </div>
+            <div class="form-group">
+                <input type="password" name="password" id="password" formControlName="password" placeholder="Password" class="form-control">
+            </div>
+            <button type="submit" class="btn btn-primary" [disabled]="!loginForm.valid">Submit</button>
+        </form>
+    </div>
+</div>

@@ -1,6 +1,7 @@
 package com.book.bookbackend.model;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
 
 @Entity
 @Table(name = "books")
@@ -21,6 +22,7 @@ public class Book {
     }
 
     @Column(name="name")
+    @NotBlank
     public String getName() {
         return name;
     }
@@ -28,7 +30,7 @@ public class Book {
     public void setName(String name) {
         this.name = name;
     }
-
+    @NotBlank
     @Column(name = "author_id")
     public String getAuthor() {
         return author;
@@ -37,7 +39,7 @@ public class Book {
     public void setAuthor(String author) {
         this.author = author;
     }
-
+    @NotBlank
     @Column(name = "type_id")
     public String getType() {
         return type;
