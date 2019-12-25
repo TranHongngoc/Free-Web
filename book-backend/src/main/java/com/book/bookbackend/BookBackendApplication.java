@@ -1,13 +1,13 @@
-package com.project.datngoc;
+package com.book.bookbackend;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class DatngocApplication {
+public class BookBackendApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(DatngocApplication.class, args);
+        SpringApplication.run(BookBackendApplication.class, args);
     }
 
 }

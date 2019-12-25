@@ -1,10 +1,10 @@
-package com.project.datngoc;
+package com.book.bookbackend;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class DatngocApplicationTests {
+class BookBackendApplicationTests {
 
     @Test
     void contextLoads() {
