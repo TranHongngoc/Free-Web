@@ -43,4 +43,38 @@ public class BookRepoCustomImpl implements BookRepoCustom {
              return null;
          }
     }
+
+    @Override
+    public List<Object[]> getAuthorByBookId(Integer id) throws Exception {
+        StringBuilder stringBuilder = new StringBuilder();
+        stringBuilder.append("select b.name as name, aut.name as author_name " );
+         stringBuilder.append("from books b, author aut, book_author baut " );
+         stringBuilder.append("where b.id= :bookId " );
+         stringBuilder.append("and b.id=baut.book_id " );
+         stringBuilder.append("and aut.id=baut.author_id ");
+         Query query = entityManager.createNativeQuery(stringBuilder.toString());
+         query.setParameter("bookId", id);
+        return query.getResultList();
+    }
+
+    @Override
+    public List<String> getBookNames() throws Exception {
+        StringBuilder stringBuilder = new StringBuilder();
+        stringBuilder.append("select name from books");
+        Query query = entityManager.createNativeQuery(stringBuilder.toString());
+        return query.getResultList();
+    }
+
+    @Override
+    public boolean checkName(String name) throws Exception {
+        boolean check = false;
+        List<String> bookNames = getBookNames();
+        for(String bookName: bookNames) {
+            if (bookName.equalsIgnoreCase(name)) {
+                check = true;
+                break;
+            }
+        }
+        return check;
+    }
 }

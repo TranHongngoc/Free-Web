@@ -8,8 +8,10 @@ import javax.validation.constraints.NotBlank;
 public class Book {
     private Integer id;
     private String name;
-    private String author;
-    private String type;
+    private Integer authorId;
+    private Integer typeId;
+    private Integer year;
+    private Integer status;
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -22,7 +24,6 @@ public class Book {
     }
 
     @Column(name="name")
-    @NotBlank
     public String getName() {
         return name;
     }
@@ -30,22 +31,38 @@ public class Book {
     public void setName(String name) {
         this.name = name;
     }
-    @NotBlank
     @Column(name = "author_id")
-    public String getAuthor() {
-        return author;
+    public Integer getAuthor() {
+        return authorId;
     }
 
-    public void setAuthor(String author) {
-        this.author = author;
+    public void setAuthor(Integer authorId) {
+        this.authorId = authorId;
     }
-    @NotBlank
     @Column(name = "type_id")
-    public String getType() {
-        return type;
+    public Integer getType() {
+        return typeId;
     }
 
-    public void setType(String type) {
-        this.type = type;
+    public void setType(Integer typeId) {
+        this.typeId = typeId;
+    }
+
+    @Column(name = "year")
+    public Integer getYear() {
+        return year;
+    }
+
+    public void setYear(Integer year) {
+        this.year = year;
+    }
+
+    @Column(name = "status")
+    public Integer getStatus() {
+        return status;
+    }
+
+    public void setStatus(Integer status) {
+        this.status = status;
     }
 }
