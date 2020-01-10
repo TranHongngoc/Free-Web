@@ -1,2 +1,73 @@
 <app-header></app-header>
-<p>book works!</p>
+<div class="row">
+  <div class="col-12">
+    <form [formGroup]="bookForm">
+      <div class="card-body">
+        <div class="row">
+          <div class="col-md-2">
+            <label>ten sach</label>
+          </div>
+          <div class="col-md-4">
+            <input type="text" formControlName="bookName">
+          </div>
+          <div class="col-md-2">
+            <label>tac gia</label>
+          </div>
+          <div class="col-md-4">
+            <select formControlName="author">
+              <option [value]="1">tac gia 1</option>
+              <option [value]="2">tac gia 2</option>
+              <option [value]="3">tac gia 3</option>
+            </select>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-2">
+            <label>tthe loai</label>
+          </div>
+          <div class="col-md-4">
+            <input type="text">
+          </div>
+          <div class="col-md-2">
+            <label>nam sang tac</label>
+          </div>
+          <div class="col-md-4">
+            <input type="text">
+          </div>
+        </div>
+      </div>
+    </form>
+
+    <div class="card-footer">
+      <div class="but-form">
+        <button class="btn btn-primary with100" (click)="getValue()">Tim kiem</button>
+        <button class="btn btn-primary with100">Them moi</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-12">
+    <table class="table table-striped table-responsive table-hover">
+      <thead>
+        <tr>
+          <th>STT</th>
+          <th>Ten sach</th>
+          <th>tac gia</th>
+          <th>the loai</th>
+          <th>nam sang tac</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let book of books">
+          <td>stt</td>
+          <td>{{book['bookName']}}</td>
+          <td>{{book['authorNames']}}</td>
+          <td>{{book['author']}}</td>
+          <td>{{book['type']}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

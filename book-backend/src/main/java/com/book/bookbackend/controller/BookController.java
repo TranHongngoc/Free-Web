@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.util.List;
 
 @RestController
+@CrossOrigin(origins = "*")
 public class BookController {
 
     @Autowired
@@ -19,7 +20,7 @@ public class BookController {
     @GetMapping("/getBooks")
     public ApiResponse getBooks() {
         try {
-            List<Book> books = bookService.getAllBooks();
+            List<BookDTO> books = bookService.getAllBooks();
             if (books != null) {
                 return ApiResponse.build(HttpServletResponse.SC_OK, true, "", books);
             } else {

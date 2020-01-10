@@ -6,7 +6,7 @@ import com.book.bookbackend.model.Book;
 import java.util.List;
 
 public interface BookService {
-    List<Book> getAllBooks () throws Exception;
+    List<BookDTO> getAllBooks () throws Exception;
     Book getBookById(Integer id) throws Exception;
     BookDTO getAuthorByBookId(Integer id) throws Exception;
     Book addBook(Book book) throws Exception;

@@ -22,15 +22,15 @@ public class BookServiceImpl implements BookService {
     EntityManager entityManager;
 
     @Override
-    public List<Book> getAllBooks() throws Exception {
+    public List<BookDTO> getAllBooks() throws Exception {
         List<Object[]> bookObjects = bookRepo.getAllBooks();
-        List<Book> books = new ArrayList<>();
+        List<BookDTO> books = new ArrayList<>();
         for (Object[] book: bookObjects){
-            Book book1 = new Book();
+            BookDTO book1 = new BookDTO();
             book1.setId((Integer) book[0]);
-            book1.setName((String) book[1]);
-            book1.setAuthor((Integer) book[2]);
-            book1.setType((Integer) book[3]);
+            book1.setBookName((String) book[1]);
+            book1.setAuthor((String) book[2]);
+            book1.setType((String) book[3]);
             books.add(book1);
         }
         return books;
