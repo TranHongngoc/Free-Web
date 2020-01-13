@@ -16,10 +16,12 @@ public class BookRepoCustomImpl implements BookRepoCustom {
     @Override
     public List<Object[]> getAllBooks() throws Exception {
         StringBuilder stringBuilder = new StringBuilder();
-        stringBuilder.append("select b.id as id, b.name as bookname, a.name as author, t.name as type ");
+        stringBuilder.append("select b.id as id, b.name as bookname, a.name as author, t.name as type, b.year as year, b.img_name as image, b.book_code ");
         stringBuilder.append("from books b, author a, book_type t ");
         stringBuilder.append("where b.type_id=t.id and b.author_id=a.id");
         Query query = entityManager.createNativeQuery(stringBuilder.toString());
+//        query.setFirstResult(1);
+//        query.setMaxResults(3);
         List<Object[]> books = query.getResultList();
         if (books != null) {
             return books;

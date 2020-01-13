@@ -10,6 +10,9 @@ public class BookDTO {
     private String author;
     private String type;
     private Integer status;
+    private Integer year;
+    private String imgName;
+    private String bookCode;
 
     public Integer getId() {
         return id;
@@ -57,5 +60,29 @@ public class BookDTO {
 
     public void setStatus(Integer status) {
         this.status = status;
+    }
+
+    public Integer getYear() {
+        return year;
+    }
+
+    public void setYear(Integer year) {
+        this.year = year;
+    }
+
+    public String getImgName() {
+        return imgName;
+    }
+
+    public void setImgName(String imgName) {
+        this.imgName = imgName;
+    }
+
+    public String getBookCode() {
+        return bookCode;
+    }
+
+    public void setBookCode(String bookCode) {
+        this.bookCode = bookCode;
     }
 }

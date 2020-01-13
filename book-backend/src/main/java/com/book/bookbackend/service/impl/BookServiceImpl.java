@@ -4,14 +4,19 @@ import com.book.bookbackend.DTO.BookDTO;
 import com.book.bookbackend.model.Book;
 import com.book.bookbackend.repo.BookRepo;
 import com.book.bookbackend.service.BookService;
+import org.apache.commons.io.FileUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.transaction.Transactional;
+import java.io.File;
 import java.util.ArrayList;
+import java.util.Base64;
 import java.util.List;
+
+import static java.util.Base64.getEncoder;
 
 @Service
 public class BookServiceImpl implements BookService {
@@ -24,6 +29,7 @@ public class BookServiceImpl implements BookService {
     @Override
     public List<BookDTO> getAllBooks() throws Exception {
         List<Object[]> bookObjects = bookRepo.getAllBooks();
+        String imgBase;
         List<BookDTO> books = new ArrayList<>();
         for (Object[] book: bookObjects){
             BookDTO book1 = new BookDTO();
@@ -31,6 +37,15 @@ public class BookServiceImpl implements BookService {
             book1.setBookName((String) book[1]);
             book1.setAuthor((String) book[2]);
             book1.setType((String) book[3]);
+            book1.setYear((Integer) book[4]);
+            imgBase = (String) book[5];
+            ClassLoader classLoader = getClass().getClassLoader();
+            String urlImg = "image/" + imgBase;
+            File file = new File(classLoader.getResource(urlImg).getFile());
+            byte[] fileContent = FileUtils.readFileToByteArray(file);
+            String encodedString = Base64.getEncoder().encodeToString(fileContent);
+            book1.setImgName(encodedString);
+            book1.setBookCode((String) book[6]);
             books.add(book1);
         }
         return books;
