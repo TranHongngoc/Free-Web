@@ -16,8 +16,6 @@ import java.util.ArrayList;
 import java.util.Base64;
 import java.util.List;
 
-import static java.util.Base64.getEncoder;
-
 @Service
 public class BookServiceImpl implements BookService {
     @Autowired
@@ -39,12 +37,14 @@ public class BookServiceImpl implements BookService {
             book1.setType((String) book[3]);
             book1.setYear((Integer) book[4]);
             imgBase = (String) book[5];
-            ClassLoader classLoader = getClass().getClassLoader();
-            String urlImg = "image/" + imgBase;
-            File file = new File(classLoader.getResource(urlImg).getFile());
-            byte[] fileContent = FileUtils.readFileToByteArray(file);
-            String encodedString = Base64.getEncoder().encodeToString(fileContent);
-            book1.setImgName(encodedString);
+            if(imgBase != null) {
+//                ClassLoader classLoader = getClass().getClassLoader();
+                //           String urlImg = "/image/" + imgBase;
+                File file = new File(ClassLoader.getSystemResource("baby-girl.png").getFile());
+                byte[] fileContent = FileUtils.readFileToByteArray(file);
+                String encodedString = Base64.getEncoder().encodeToString(fileContent);
+                book1.setImgName(encodedString);
+            }
             book1.setBookCode((String) book[6]);
             books.add(book1);
         }
